@@ -7,6 +7,7 @@ const UploadButton = () => {
   const fileInput = useRef(null);
   const [file, setFile] = useState(null);
   const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const parseFile =   (file) => {
     let fileName = file.name;
@@ -22,6 +23,7 @@ const UploadButton = () => {
         })
       }
         setData(data)
+        setLoading(false)
         //clear file input
         fileInput.current.value = '';
 
@@ -35,6 +37,7 @@ const UploadButton = () => {
 
   const handleClick =  () => {
     if(file) {
+      setLoading(true);
       parseFile(file);
       
     }
@@ -47,6 +50,10 @@ const UploadButton = () => {
     setData(null);
   }
 
+  const handleInputClick = () => {
+    setData(null);
+    setLoading(false);
+  }
 
   return (
     <>
@@ -56,11 +63,12 @@ const UploadButton = () => {
     </div>
     <label className={styles.uploadButtonLabel}>
       <div className="input-group">
-        <input ref={fileInput} type="file" className="form-control" accept=".csv" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload" onChange={handleFile}/>
+        <input onClick={handleInputClick} ref={fileInput} type="file" className="form-control" accept=".csv" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload" onChange={handleFile}/>
         <button onClick={handleClick} className="btn " type="button" id="inputGroupFileAddon04">Parse</button>
       </div>  
     </label>
     <div>
+    {loading && <h3 className={`${styles.loading} pt-2`}>Loading...</h3>}
     {data && 
     <>
     <div className={styles.pre__header}>
