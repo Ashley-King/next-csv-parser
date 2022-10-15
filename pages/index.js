@@ -12,7 +12,7 @@ export default function Home() {
       
       <div className="container">
         <div className="row">
-          <div className="column col-12 py-5 ">
+          <div className="column col-12 pt-5 pb-0 ">
             <h1 className="text-center">CSV Parser</h1>
           </div>
         </div>
