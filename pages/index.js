@@ -12,14 +12,14 @@ export default function Home() {
       
       <div className="container">
         <div className="row">
-          <div className="column col-12 pt-5 pb-0 ">
+          <div className="column col-12 pt-5 pb-2 ">
             <h1 className="text-center">CSV Parser</h1>
           </div>
         </div>
       </div>
       <div className="container">
         <div className="row">
-          <div className="column col-8 py-5 mx-auto d-flex justify-content-center flex-column ">
+          <div className="column col-8 pb-5 pt-2 mx-auto d-flex justify-content-center flex-column ">
             <UploadButton  />
           </div>
         </div>

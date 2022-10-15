@@ -3,11 +3,12 @@ import {useState, useRef} from 'react';
 import Papa from 'papaparse';
 
 const UploadButton = () => {
-  
+  const originalButtonText = "Copy to Clipboard";
   const fileInput = useRef(null);
   const [file, setFile] = useState(null);
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [buttonText, setButtonText] = useState(originalButtonText);
 
   const parseFile =   (file) => {
     let fileName = file.name;
@@ -48,11 +49,22 @@ const UploadButton = () => {
 
   const handleReset = () => {
     setData(null);
+    setButtonText(originalButtonText);
+    setFile(null);
   }
 
   const handleInputClick = () => {
     setData(null);
     setLoading(false);
+    setButtonText(originalButtonText);
+  }
+
+  const handleCopyToClipboard = () => {
+    navigator.clipboard.writeText(JSON.stringify(data, null, 2));
+    setButtonText('Copied!');
+    setTimeout(() => {
+      setButtonText(originalButtonText);
+    }, 2000);
   }
 
   return (
@@ -74,6 +86,10 @@ const UploadButton = () => {
     <div className={styles.pre__header}>
     <h2>CSV JSON (scrollable):</h2>
     </div>
+    <div className="py-2">
+    <button className="btn " onClick={handleCopyToClipboard}>{buttonText}</button>
+    </div>
+    
     <div className={styles.pre} >
     
     <pre >{JSON.stringify(data, null, 2)}</pre>
