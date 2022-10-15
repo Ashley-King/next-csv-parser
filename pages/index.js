@@ -19,7 +19,7 @@ export default function Home() {
       </div>
       <div className="container">
         <div className="row">
-          <div className="column col-8 py-5 mx-auto d-flex justify-content-center ">
+          <div className="column col-8 py-5 mx-auto d-flex justify-content-center flex-column ">
             <UploadButton  />
           </div>
         </div>
