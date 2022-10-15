@@ -13,7 +13,7 @@ export default function Home() {
       <div className="container">
         <div className="row">
           <div className="column col-12 pt-5 pb-2 ">
-            <h1 className="text-center">CSV Parser</h1>
+            <h1 className="text-center text-capitalize">CSV Parser</h1>
           </div>
         </div>
       </div>
